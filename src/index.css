@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* .dropdown-input.dropdown-menu > li > a {
+  &:hover,
+  &:focus {
+    color: $dropdown-link-color;  // #333
+    background-color: $dropdown-bg; // #fff
+  }
+}
+.dropdown-input.dropdown-menu > .active > a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $dropdown-link-hover-color;  // #fff
+    background-color: $dropdown-link-hover-bg;  // #337ab7
+  }
+} */
+
+.btn-secondary {
+  background-color: white !important;
+  border: none !important;
+}
+
+.render-day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
