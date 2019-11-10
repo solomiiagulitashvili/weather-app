@@ -1,9 +1,8 @@
 import React from 'react';
-import { Table } from 'reactstrap';
-import convertIcon from './utils/convertIcon';
-import convertTemperature from './utils/convertTemperature';
+import { TabContent, Nav } from 'reactstrap';
 import RenderDay from './RenderDay';
 import DrawChart from './DrawChart';
+import DayExpanded from './DayExpanded';
 
 
 class RenderWeather extends React.Component {
@@ -11,9 +10,17 @@ class RenderWeather extends React.Component {
     super(props);
     this.state = {
       response: null,
+      activeTab: null,
     };
   }
 
+
+  toggle = (tab) => {
+    const { activeTab } = this.state;
+    if (activeTab !== tab) {
+      this.setState({ activeTab: tab });
+    }
+  }
 
   render() {
     if (this.props.response === null) {
@@ -23,40 +30,23 @@ class RenderWeather extends React.Component {
     }
     console.log(this.props.response);
     // const template = tinytime('{dddd}');
-    const { response: { currently, daily: { data: dData }, hourly: { data: hData } }, timezone } = this.props;
+    const { response: { daily: { data: dData }, hourly: { data: hData } }, timezone } = this.props;
 
     return (
       <>
-        <Table borderless>
-          <thead>
-            <tr>
-              <th>{timezone} </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  src={convertIcon(currently.icon)}
-                  alt={currently.icon}
-                  width="50px" height="50px" >
-                </img>
-              </td>
-              <td>{convertTemperature(currently.apparentTemperature)} &deg;C </td>
-              <td>Rain: {''} {currently.precipProbability * 100} &#37;
-                <br />
-                Humidity: {''} {currently.humidity * 100} &#37;
-                <br />
-                Wind: {''} {currently.windSpeed} km/h
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-        <DrawChart data={hData} />
-        <div className="render-day">
-          {console.log(dData)}
-          {dData && dData.map((day) => <RenderDay item={day} key={day.time} />)}
+        <div>
+          <h3>{timezone}</h3>
         </div>
+        <div>
+          <Nav tabs>
+            {dData && dData.map((day) => <RenderDay item={day} key={day.time}
+              toggle={this.toggle} activeTab={this.state.activeTab} />)}
+          </Nav>
+          <TabContent activeTab={this.state.activeTab}>
+            {dData && dData.map((day) => <DayExpanded item={day} key={day.time} />)}
+          </TabContent>
+        </div>
+        <DrawChart data={hData} />
       </>
     );
   }

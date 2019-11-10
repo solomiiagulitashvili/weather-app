@@ -28,9 +28,54 @@ code {
   }
 } */
 
-.btn-secondary {
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 20px;
+  background-color: #007bff;
+  color: white;
+  margin-bottom: 30px;
+
+}
+
+.form-control {
+  color: #007bff !important;
+  border: 1px solid #007bff !important;
+  width: 400px !important;
+  margin: 0 10px !important;
+}
+
+.title {
+  font-size: 28px;
+}
+/* .btn-secondary {
   background-color: white !important;
   border: none !important;
+} */
+
+.navigation-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 720px;
+  align-items: baseline;
+  color: #007bff;
+}
+
+.btn {
+  margin-right: 10px !important;
+}
+.alert {
+  margin: 10px 0 !important;
+  width: 710px !important;
+  text-align: center !important;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .render-day {

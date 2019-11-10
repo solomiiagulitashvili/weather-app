@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'reactstrap';
+import { Input, Button } from 'reactstrap';
 import sortResponse from './utils/sortResponse';
 
 class RenderWeather extends React.Component {
@@ -54,9 +54,16 @@ class RenderWeather extends React.Component {
     }
   }
 
+  handleClick = () => {
+    this.geocoder();
+  }
+
   render() {
     return (
-      <Input type="text" name="cities" placeholder="Enter your city" value={this.state.input} onChange={this.onInputChange} onKeyPress={this.onKeyPress} />
+      <>
+        <Input type="text" name="cities" placeholder="Enter your city" value={this.state.input} onChange={this.onInputChange} onKeyPress={this.onKeyPress} />
+        <Button color="primary" onClick={this.handleClick} >Search</Button>
+      </>
     );
   }
 }

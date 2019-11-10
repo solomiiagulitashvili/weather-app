@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Alert } from 'reactstrap';
 import WeatherButton from './WeatherButton';
 import RenderLocalWeather from './RenderLocalWeather';
 import RenderWeather from './RenderWeather';
@@ -20,11 +21,19 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <h1 className="header">MetaWeather</h1>
+        <div className="header">
+          <h1 className="title">MetaWeather</h1>
+          <span>Powered by darksky.net</span>
         </div>
-        <WeatherButton weatherResponse={this.weatherResponse} />
-        <RenderWeather weatherResponse={this.weatherResponse} />
+        <div className="container">
+          <div className="navigation-btns">
+            <WeatherButton weatherResponse={this.weatherResponse} />
+            <RenderWeather weatherResponse={this.weatherResponse} />
+          </div>
+          <Alert color="primary">
+            Select location
+          </Alert>
+        </div>
         <RenderLocalWeather response={this.state.response} />
       </>
     );

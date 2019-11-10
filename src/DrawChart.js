@@ -7,7 +7,7 @@ const DrawChart = ({ data }) => {
   const template = tinytime('{H}');
 
   const array = data.map((item) => [template.render(new Date(item.time * 1000)),
-    convertTemperature(item.apparentTemperature)]);
+  convertTemperature(item.apparentTemperature)]);
   array.unshift(['time', 'temperature']);
   const arraySlised = array.slice(0, 25);
   console.log(arraySlised);
@@ -19,11 +19,8 @@ const DrawChart = ({ data }) => {
       // loader={< div > Loading Chart</div >}
       data={arraySlised}
       options={{
-        // hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
         vAxis: { minValue: 0 },
-        // For the legend to fit, we make the chart area smaller
         chartArea: { width: '80%', height: '80%' },
-        // lineWidth: 25
       }}
     />
   );
