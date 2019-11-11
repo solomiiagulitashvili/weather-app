@@ -30,11 +30,15 @@ class App extends React.Component {
             <WeatherButton weatherResponse={this.weatherResponse} />
             <RenderWeather weatherResponse={this.weatherResponse} />
           </div>
-          <Alert color="primary">
-            Select location
+          {!this.state.response
+            && <Alert color="primary">
+              Select location
           </Alert>
+          }
+          <div className="render">
+            <RenderLocalWeather response={this.state.response} />
+          </div>
         </div>
-        <RenderLocalWeather response={this.state.response} />
       </>
     );
   }

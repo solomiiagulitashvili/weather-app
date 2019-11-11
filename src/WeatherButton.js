@@ -53,7 +53,7 @@ class WeatherButton extends React.Component {
   render() {
     return (
       <>
-        <Button outline color="primary" onClick={this.handleClick} >Show my local weather</Button>
+        <Button color="primary" onClick={this.handleClick} className='btn-show-local'>Show my local weather</Button>
         <span>or</span>
       </>
     );

@@ -4,14 +4,15 @@ import {
 } from 'reactstrap';
 import convertIcon from './utils/convertIcon';
 import convertTemperature from './utils/convertTemperature';
+import DrawChart from './DrawChart';
 
 
-const DayExpanded = ({ item }) => (
+const DayExpanded = ({ item, index, data }) => (
   <>
     <TabPane tabId={item.time}>
       <Row>
         <Col sm="12">
-          <Table borderless>
+          <Table borderless className="one-day">
             <tbody>
               <tr>
                 <td>
@@ -34,6 +35,7 @@ const DayExpanded = ({ item }) => (
               </tr>
             </tbody>
           </Table>
+          <DrawChart index={index} data={data} />
         </Col>
       </Row>
     </TabPane>
